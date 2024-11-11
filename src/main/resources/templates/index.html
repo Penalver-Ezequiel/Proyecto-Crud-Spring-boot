@@ -1,75 +1,68 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org"> <!--Agrego la dependecia Thymeleaf-->
+<html xmlns="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="Control de Alumnos - Gestión de alumnos para el instituto IRSO">
-  <title>Control de Alumnos</title>  <!--Nombre de la pagina-->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Control de Alumnos</title>
+  <link rel="stylesheet" href="estilo.css"> <!-- Enlace al archivo CSS -->
 </head>
 
 <body>
-   <!-- Encabezado-->
-   <header>
-    <h1 class="text-center my-4">Bienvenidos al Control de Alumnos</h1>
+  <header>
+    <h1 class="text-center">Bienvenidos al Control de Alumnos</h1>
   </header>
 
-  <!--Barra de navegacion-->>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/alumno">Control de Alumnos</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/nuevo">Agregar Alumno</a> <!-- Redirige a la vista de agregar alumno -->
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav>
+    <ul>
+      <li><a href="/alumno">Control de Alumnos</a></li>
+      <li><a href="/nuevo">Agregar Alumno</a></li>
+    </ul>
   </nav>
 
-  <main class="container text-center">
-    <table class="table table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <!--Utiliza las dependecias thymeleaf debido a que facilita la creación de columnas 
-          y su integración con modelos de datos en aplicaciones Spring MVC.
-          -->
-          <th scope="col">ID</th> <!--Columnas --> 
-          <th scope="col">Dni</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Email</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Fecha De Nacimiento</th>
-          <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody> 
-          <tr th:each="alumno : ${lista}"><!--Bucle for each con el objeto alumno para Recorrer la lista-->
-          <td th:text="${alumno.id}"> </td><!--se utiliza el objeto alumno y las variables asignadas-->
-          <td th:text="${alumno.dni}"> </td>
-          <td th:text="${alumno.nombre}"> </td>
-          <td th:text="${alumno.apellido}"> </td>
-          <td th:text="${alumno.email}"> </td>
-          <td th:text="${alumno.telefono}"> </td>
-          <td th:text="${#dates.format(alumno.fecha_de_nacimiento, 'dd/MM/yyyy')}"> </td>
-          <td>
-            <a class="btn btn-primary" th:href="@{'/editar/' + ${alumno.id}}">editar</a> 
-            &nbsp; 
-            <a class="btn btn-danger" th:href="@{'/eliminar/' + ${alumno.id}}">eliminar</a> 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</main>
+  <main>
+    <section class="search-section">
+      <input type="text" id="search" placeholder="Buscar alumno" onkeyup="searchTable()">
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy;Irso Proyecto Grupal hecho en la materia POO.</p>
+    <section class="table-section">
+      <article>
+        <table id="alumnoTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Dni</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Fecha De Nacimiento</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="alumno : ${lista}">
+              <td th:text="${alumno.id}"></td>
+              <td th:text="${alumno.dni}"></td>
+              <td th:text="${alumno.nombre}"></td>
+              <td th:text="${alumno.apellido}"></td>
+              <td th:text="${alumno.email}"></td>
+              <td th:text="${alumno.telefono}"></td>
+              <td th:text="${#dates.format(alumno.fecha_de_nacimiento, 'dd/MM/yyyy')}"></td>
+              <td>
+                <a href="/editar/{alumno.id}" class="btn btn-primary">Editar</a>
+                <a href="/eliminar/{alumno.id}" class="btn btn-danger">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Irso Proyecto Grupal hecho en la materia POO.</p>
   </footer>
-  <!-- Bootstrap JS y dependencias -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script> 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+
+  <script src="script.js"></script> <!-- Enlace al archivo JS -->
 </body>
 </html>
