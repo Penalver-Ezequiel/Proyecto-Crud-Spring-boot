@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
-
 <head>
   <meta charset="UTF-8">
   <title>Agregar Alumno</title>
@@ -15,7 +14,7 @@
     <h1>Control de Alumnos</h1>
       <nav>
         <ul>
-          <li><a href="/nuevo">Agregar Alumno</a></li>
+          <li><a href="/index">Alumnos</a></li>
         </ul>
       </nav>
     </header>
@@ -23,11 +22,9 @@
     
     <!--Formulario de agregar alumno-->
     <main>
-      <h2>Agregar Alumno</h2>
-
       <form th:action="@{/guardar}" th:object="${alumno}" method="post">
         <fieldset>
-          <legend>Datos del Alumno</legend>
+          <legend>Agregar Alumno</legend>
 
           <label for="dni">DNI:</label>
           <input type="text" id="dni" name="dni" th:field="*{dni}" placeholder="Digite el DNI del Alumno" required>
