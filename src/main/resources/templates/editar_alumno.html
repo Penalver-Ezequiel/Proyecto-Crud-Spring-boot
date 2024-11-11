@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Alumno</title>
+  <!--Diseño-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Encabezado-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/alumno">Control de Alumnos</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/nuevo">Agregar Alumno</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br>
+<!--Diseño-->
+  <div class="containe">
+    <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+    <h1 class="text-center">Agregar Alumno</h1> <!--Nombre del formulario-->
+    <div class="card-body"> <!--Cuerpo-->
+        <!--que se rediriga a la vista /guardar y al controlador, en base al objeto de la clase Alumno "Alumno 'alumno'"-->
+        <form th:action="@{/guardar}" th:object="${alumno}" method="post">
+            <div class="form-group">
+                <label>Id: </label>
+                <!--tipo, nombre, dato, formulario y solo de lectura para no modificicar el id-->
+                <input type="number" name="id" th:field="*{id}" class="form-control" readonly="readonly">
+            </div>
+
+            <div class="form-group">
+              <label>Dni: </label>
+              <!--tipo, nombre, dato, formulario -->
+              <input type="text" name="dni" th:field="*{dni}" class="form-control" placeholder="Digite el Dni del Alunmno">
+            </div>
+            <div class="form-group">
+                <label>Nombre: </label>
+                <!--tipo,nombre,dato,formulario y que aparezca para digitar-->
+                <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Digite el Nombre del Alumno">
+            </div>
+            <div class="form-group">
+                <label>Apellido: </label>
+                <input type="text" name="apellido" th:field="*{apellido}" class="form-control" placeholder="Digite el Apellido del Alumno">
+            </div>
+            <div class="form-group">
+                <label>Email: </label>
+                <input type="text" name="email" th:field="*{email}" class="form-control" placeholder="Digite el Email del Alumno">
+            </div>
+            <div class="form-group">
+                <label>Telefono: </label>
+                <input type="number" name="telefono" th:field="*{telefono}" class="form-control" placeholder="Digite el Telefono del Alumno">
+            </div>
+            <div class="form-group">
+                <label>Fecha de Nacimiento: </label>
+                <input type="text" name="Fecha de Nacimiento" th:field="*{fecha_de_nacimiento}" class="form-control" placeholder="Digite la fecha de nacimiento del Alumno">
+            </div>
+        <!--color/diseño y boton guardar que anda debido al controlador y servicio save-->
+        <div class="box-footer">
+        <button class="btn btn-success">Guardar</button>
+        </div>
+        </form>
+      </div>
+      </div>
+      </div>
+      </div>
+      
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>

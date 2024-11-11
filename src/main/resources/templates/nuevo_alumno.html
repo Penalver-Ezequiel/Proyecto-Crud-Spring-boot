@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"> <!--Dependecia Thymeleaf-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Alumno</title> <!--Titulo de la pagina-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<!--Encabezado-->
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/alumno">Control de Alumnos</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"> <a class="nav-link" href="/nuevo">Agregar Alumno</a> <!--Cuando presionemos el boton agregar alumno nos redirigira a la vista /nuevo-->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br>
+<!--Color, forma y formato-->
+  <div class="containe">
+    <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+    <h1 class="text-center">Agregar Alumno</h1>
+    <div class="card-body">
+      <!--Cuando se presione el boton guardar nsos redirigira a la vista guardar de nuestro controlador
+      th:object="${alumno}": Vincula todo el formulario a un objeto Alumno del metodo guardar, 
+      permitiendo que los campos de entrada se asocien a las propiedades de este objeto.-->
+        <form th:action="@{/guardar}" th:object="${alumno}" method="post"> <!--El objeto alumno se refiere al que se añadió al modelo con la clave "alumno".-->
+        <div class="form-group">
+            <label>Dni: </label>
+            <!---->
+            <!--Thymeleaf: Facilita la creación de formularios dinámicos y su integración con modelos de datos en aplicaciones Spring MVC.
+            th:field="*{dni}": Vincula este campo de entrada a la propiedad dni del objeto Alumno. 
+            Esto significa que cuando se renderiza el formulario, el valor del campo dni en el objeto Alumno se mostrará en este campo de entrada. 
+            Cuando el formulario se envía, el valor ingresado en este campo se asignará a la propiedad dni del objeto Alumno.-->
+            <input type="text" name="dni" th:field="*{dni}" class="form-control" placeholder="Digite el Dni del Alumno">
+        </div>
+        <div class="form-group">
+            <label>Nombre: </label>
+            <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Digite el Nombre del Alumno">
+        </div>
+        <div class="form-group">
+            <label>Apellido: </label>
+            <input type="text" name="apellido" th:field="*{apellido}" class="form-control" placeholder="Digite el Apellido del Alumno">
+        </div>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="text" name="email" th:field="*{email}" class="form-control" placeholder="Digite el Email del Alumno">
+        </div>
+        <div class="form-group">
+            <label>Telefono: </label>
+            <input type="number" name="telefono" th:field="*{telefono}" class="form-control" placeholder="Digite el Telefono del Alumno">
+        </div>
+        <div class="form-group">
+            <label>Fecha de Nacimiento: </label>
+            <input type="text" name="Fecha de Nacimiento" th:field="*{fecha_de_nacimiento}" class="form-control" placeholder="Digite la fecha de nacimiento del Alumno">
+        </div>
+        <!--Caja para el boto guardar-->
+        <div class="box-footer">
+          <!--Boton guardar-->
+        <button class="btn btn-success">Guardar</button>
+        </div>
+        </form>
+      </div>
+      </div>
+      </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
