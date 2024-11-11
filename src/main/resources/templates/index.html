@@ -4,21 +4,24 @@
   <meta charset="UTF-8">
   <meta name="description" content="Control de Alumnos - Gestión de alumnos para el instituto IRSO">
   <title>Control de Alumnos</title>
-  <link rel="stylesheet" href="estilo.css"> <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="estiloIndex.css"> <!--Enlace al archivo CSS-->
 </head>
 
+<!--Encabezado-->>
 <body>
   <header>
     <h1 class="text-center">Bienvenidos al Control de Alumnos</h1>
   </header>
 
+  <!-- Barra de navegación -->
   <nav>
     <ul>
-      <li><a href="/alumno">Control de Alumnos</a></li>
-      <li><a href="/nuevo">Agregar Alumno</a></li>
+      <li><a href="/editar_alumno">Editar Alumno</a></li>
+      <li><a href="/nuevo_alumno">Nuevo Alumno</a></li>
     </ul>
   </nav>
 
+  <!--Seccion Principal-->>
   <main>
     <section class="search-section">
       <input type="text" id="search" placeholder="Buscar alumno" onkeyup="searchTable()">
@@ -63,6 +66,6 @@
     <p>&copy; Irso Proyecto Grupal hecho en la materia POO.</p>
   </footer>
 
-  <script src="script.js"></script> <!-- Enlace al archivo JS -->
+  <script src="script.js"></script> <!--Enlace al archivo JS-->
 </body>
 </html>
